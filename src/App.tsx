@@ -54,14 +54,13 @@ function App() {
     setAnswers(answers => {
       answers.set(item.id, answer.id);
       return answers;
-    })
+    });
     if (item.id === skinTypeSurvey.items.length - 1) {
       setDone(true);
       return;
     }
     setCurrentItem(currentItem + 1);
   }
-
 
   return (
     <>
@@ -75,7 +74,7 @@ function App() {
             )}
           </Container >
         ) : (
-          <Result />
+          <Result survey={skinTypeSurvey} answers={answers}/>
         )
       }
     </>
