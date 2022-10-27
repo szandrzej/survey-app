@@ -9,25 +9,25 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 16px;
 
   height: 100vh;
 
-  background: rgb(238,174,202);
-  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  background: var(--white);
 `;
 
 const Counter = styled.h2`
     margin: 0;
-    color: white;
-    font-size: 40px;
+    color: var(--green);
+    font-size: 32px;
     font-weight: bold;
     text-align: center;
 `;
 
 const PreviousButton = styled.div`
-  color: white;
+  color: var(--green);
   font-size: 16px;
-  margin-top: 64px;
+  margin-top: 32px;
   text-transform: uppercase;
   cursor: pointer;
 `;

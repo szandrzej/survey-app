@@ -25,32 +25,34 @@ const QuestionContainer = styled.div`
 const QuestionText = styled.h2`
     margin: 0;
     padding: 16px 32px;
-    color: white;
-    font-size: 40px;
+    color: var(--green);
+    font-size: 32px;
     font-weight: bold;
     text-align: center;
 `;
 
 const AnswerContainer = styled.div<{isSelected: boolean}>`
-    border: 1px solid white;
     padding: 8px 16px;
     transition: all 225ms;
     cursor: pointer;
+    background: var(--pink);
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    
 
     ${({isSelected}) => isSelected && css`
-        background-color: #fff4;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
     `}
 
-    &:hover{
-        background-color: #fff4;
-    }
+    &:hover {
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 `;
 
 const AnswerText = styled.h3`
     margin: 0;
     padding: 16px 32px;
-    color: white;
-    font-size: 24px;
+    color: var(--white);
+    font-size: 20px;
     text-align: center;
 `;
 

@@ -1,21 +1,9 @@
 import React, { useMemo } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Survey } from '../survey';
-
 export interface ResultProps {
     answers: Map<number, number>;
     survey: Survey;
-}
-
-const backgrounds: Record<string, string> = {
-    'blue': `background-color: #FA8BFF;
-    background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);`,
-    'green': `background-color: #08AEEA;
-    background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);`,
-    'purple': `background-color: #FF3CAC;
-    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);`,
-    'red': `background-color: #FF9A8B;
-    background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);`
 }
 
 export const Container = styled.div<{ result: string }>`
@@ -26,36 +14,42 @@ export const Container = styled.div<{ result: string }>`
     padding: 16px;
 
     height: 100vh;
-    color: white;
-
-    ${({ result }) => css`${backgrounds[result]}`}
+    color: var(--green);
+    background: var(--white);
 `;
 
 export const Inner = styled.div`
     max-width: 768px;
 `;
 
-export const Title = styled.h1`
-    font-size: 40px;
+export const Title = styled.h2`
+    font-size: 32px;
     font-weight: normal;
     text-align: center;
 `;
 
-export const Subtitle = styled.h2`
-    margin-top: 40px;
+export const BoldTitle = styled.h1`
     font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+`;
+
+export const Subtitle = styled.h3`
+    margin-top: 16px;
+    font-size: 24px;
     font-weight: bold;
     text-align: center;
 `;
 
-export const Text = styled.h2`
-    margin-top: 64px;
-    font-size: 32px;
+export const Text = styled.h3`
+    font-size: 24px;
     font-weight: normal;
     text-align: center;
 
     a { 
-        color: white;
+        margin-top: 16px;
+        color: var(--green);
         text-decoration: none;
         font-weight: bold;
     }
@@ -63,15 +57,24 @@ export const Text = styled.h2`
 
 export const List = styled.ul`
     list-style-type: none;
+    display: grid;
+    grid-gap: 16px;
     padding: 0;
     margin: 0;
+    padding: 16px;
+    background: var(--pink);
+    border-radius: 16px;
+    color: var(--white)
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    margin: 32px 0;
 `;
 
 export const ListItem = styled.li`
-    margin-top: 16px;
     font-size: 24px;
     line-height: 1.1;
     text-align: center;
+    color: var(--white);
 `;
 
 export const Result = ({ answers, survey }: ResultProps) => {
@@ -105,17 +108,19 @@ export const Result = ({ answers, survey }: ResultProps) => {
         }
     }, [survey, answers]);
 
-    console.log({ result });
     return (
         <Container result={result.id}>
             <Inner>
+                <BoldTitle>Wynik</BoldTitle>
                 <Title>{result.description}</Title>
                 <Subtitle>Proponowane zabiegi dla Twojej skóry:</Subtitle>
                 <List>
                     {result.values.map((v, idx) => <ListItem key={idx}>{v}</ListItem>)}
                 </List>
                 <Text>
-                    Wszystkie zabiegi możesz wykonać w naszym salonie <br />
+                    Wszystkie zabiegi możesz wykonać w naszym salonie
+                </Text>
+                <Text>
                     <a href="https://bartoszwolak.pl/uslugi/instytut-piekna/" target="_blank">Instytut Piękna Bartosz Wolak</a>
                 </Text>
             </Inner>
